@@ -38,3 +38,17 @@ create the DB
 rails db:setup
 rails db:migrate
 ```
+
+(I'm copying generously from ([https://github.com/josh-works/turing_sidekiq_tutorial/tree/eb5ef7eb34f8baefab9d763c469d9917c09c7d3f](https://github.com/josh-works/turing_sidekiq_tutorial/tree/eb5ef7eb34f8baefab9d763c469d9917c09c7d3f)))
+
+Lets check that our root is set to `home#show` in `localhost`...
+
+It works!
+
+```
+rails g mailer QuoteMailer
+```
+
+err, not liking this, gonna try to get the OG repo up and working locally then go from there. 
+
+Only spent 30 min on this, so making good progress w/jobs. Making a big WIP commit...
