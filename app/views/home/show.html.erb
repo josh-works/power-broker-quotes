@@ -1,4 +1,17 @@
-<div>
-  <h1 class="font-bold text-4xl">Home#show</h1>
-  <p>Find me in app/views/home/show.html.erb</p>
+<div class="container box">
+  <div class="center">
+
+    <h1>Welcome to Working-It</h1>
+
+  </div>
+
+  <h1 class="form">
+  <%= form_for :mailers, url: mailers_path do |f| %>
+  <%= f.label "Email -" %>
+  <%= f.text_field :email %><br>
+  <%= f.label "Thought?" %>
+  <%= f.text_field :thought %><br>
+  <%= f.submit "Give me the randomness...", class: "center" %>
+  <% end %>
+  </h1>
 </div>
