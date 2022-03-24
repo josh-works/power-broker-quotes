@@ -1,9 +1,10 @@
 class QuotesController < ApplicationController
   def create
-    logger.debug "about to call worker"
+    logger.debug "about to call worker from QuotesController"
     # SendGifToUserWorker.new.perform(params[:mailers][:email], params[:mailers][:thought])
-    SendGifToUserWorker.perform_async(params[:mailers][:email], params[:mailers][:thought])
-    flash[:message] = "You did it! Email sent to #{params[:mailers][:email]}"
+    
+    SendGifToUserJob.new.perform(params["quote_mailer"]["email"], params["quote_mailer"]["thought"])
+    flash[:message] = "You did it! Email sent to #{params["quote_mailer"]["email"]}"
     redirect_to "/sent"  
   end
 

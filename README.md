@@ -1,5 +1,23 @@
 Similar to how I did in [my polyline practice repo](https://github.com/josh-works/polyline-practice) I'm speedrunning this. 
 
+## 2022-03-24
+
+Pushed along a bit farther, I've now got this _basically_ working in a very naïve, local-only way.
+
+To use `mailcatcher` (which I love), I had to deviate from `gem install mailcatcher` because of random `openssl` errors. I tried to get it working, then found [this](https://stackoverflow.com/questions/30818391/gem-eventmachine-fatal-error-openssl-ssl-h-file-not-found)
+
+```
+$ gem install mailcatcher -- --with-cflags="-Wno-error=implicit-function-declaration"
+```
+
+Phew, I've got a very basic version of this all working. Don't like it, but leaving it here for now.
+
+### Useful links:
+
+- https://stackoverflow.com/questions/30818391/gem-eventmachine-fatal-error-openssl-ssl-h-file-not-found
+- https://github.com/sj26/mailcatcher/issues/193#issuecomment-416750901
+- http://localhost:3000/rails/mailers/
+
 ## 2022-03-23
 
 I pay close attention to timestamps. We're just a few minutes in, I just added (and this publically listed the beginning of) [https://josh.works/projects#power-broker-quotes](https://josh.works/projects#power-broker-quotes)
@@ -52,3 +70,16 @@ rails g mailer QuoteMailer
 err, not liking this, gonna try to get the OG repo up and working locally then go from there. 
 
 Only spent 30 min on this, so making good progress w/jobs. Making a big WIP commit...
+
+...
+
+Spent some time trying to get my clone of Turing's repo running locally:
+
+[https://github.com/josh-works/turing_sidekiq_tutorial/tree/master](https://github.com/josh-works/turing_sidekiq_tutorial/tree/master), and was unsuccessful.
+
+So, I'm going to replicate the general functionality in this Rails 7 app I just created. 
+
+I am combing through the commits on the repo with `git log -p`, from `rails new` forward. 
+
+So far, I'm going to take out _most_ (or all?) of the gems
+
