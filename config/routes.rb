@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :quotes, only: [:create]
   root to: 'home#show'
   resources :users
   get 'home/show'
