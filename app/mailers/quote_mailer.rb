@@ -10,7 +10,7 @@ class QuoteMailer < ApplicationMailer
     mail(
       to: email, 
       subject: "You got a new order!", 
-      body: @quote + "\n\n" + thought + image_tag(@thought_image)
+      body: @quote + "\n\n" + thought + @thought_image
     )
   end
 end

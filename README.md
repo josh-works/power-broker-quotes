@@ -1,5 +1,9 @@
 Similar to how I did in [my polyline practice repo](https://github.com/josh-works/polyline-practice) I'm speedrunning this. 
 
+## 2022-03-26
+
+Confirming what I did last time around. It _wasn't quite_ in a working state then, but it is now. So, doing a `git add` and `git commit`
+
 ## 2022-03-24
 
 Pushed along a bit farther, I've now got this _basically_ working in a very naïve, local-only way.
