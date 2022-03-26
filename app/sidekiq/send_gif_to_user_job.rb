@@ -7,8 +7,9 @@ class SendGifToUserJob
     logger.debug args
     email = args[0]
     thought = args[1]
-    
+    puts "trying to fail"
+    raise "oops"
     QuoteMailer.new_quote_email(email, thought).deliver_now
-
+    
   end
 end

@@ -1,8 +1,45 @@
 Similar to how I did in [my polyline practice repo](https://github.com/josh-works/polyline-practice) I'm speedrunning this. 
 
+
+
 ## 2022-03-26
 
 Confirming what I did last time around. It _wasn't quite_ in a working state then, but it is now. So, doing a `git add` and `git commit`
+
+Commit ed380b
+
+Oh, but it's not getting enqued. If I bring back a `sleep` count, you can interact with the app and see the problem.
+
+So, do this:
+
+```diff
+--- a/app/controllers/quotes_controller.rb
++++ b/app/controllers/quotes_controller.rb
+@@ -3,7 +3,7 @@ def create
+     logger.debug "about to call worker from QuotesController"
+     # SendGifToUserWorker.new.perform(params[:mailers][:email], params[:mailers][:thought])
+
+-    SendGifToUserJob.new.perform(params["quote_mailer"]["email"], params["quote_mailer"]["thought"])
++    SendGifToUserJob.perform_async(params["quote_mailer"]["email"], params["quote_mailer"]["thought"])
+     flash[:message] = "You did it! Email sent to #{params["quote_mailer"]["email"]}"
+     redirect_to "/sent"
+   end
+```
+
+Now, if you're keeping an eye on your redis 'server', you'll see a bunch of `lpush` but not `lpop`:
+
+```
+// start redis (optionally in a background tab):
+$ redis-server &
+
+// run a `monitor running redis instance` program to look for lines containing magical strings:
+$ redis-cli monitor | grep -E "(hset|lpush)"
+```
+
+Now fire off some jobs, and watch them piling up in that tab. More info here: [https://josh.works/sidekiq-and-background-jobs-in-rails-for-beginners#watching-redis](https://josh.works/sidekiq-and-background-jobs-in-rails-for-beginners#watching-redis)
+
+How to get those jobs to drain... hm. Also, shouldn't I be able to see a live Redis dashboard somewhere?
+
 
 ## 2022-03-24
 
